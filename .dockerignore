@@ -1,0 +1,6 @@
+.git
+.dockerignore
+.env
+pokemon-app-api/node_modules/
+pokemon-app-api/vendor/bundle/
+pokemon-app-api/tmp/
