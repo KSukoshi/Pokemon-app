@@ -20,6 +20,8 @@ services:
       - pokemon-app-api-redis:/var/lib/redis/data
 
   pokemon-app-api:
+    tty: true
+    stdin_open: true
     build:
       context: .
     volumes:
