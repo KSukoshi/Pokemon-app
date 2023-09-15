@@ -7,7 +7,13 @@ class PokemonAbilitiesController < ApplicationController
   end
 
   def show
-    render json: @pokemon_ability, except: [:created_at, :updated_at, :pokemon_id]
+    if @pokemon_ability == "Not found"
+      render json: {
+        error: "Pokemon not found"
+      }, status: 400
+    else
+      render json: @pokemon_ability, except: [:created_at, :updated_at, :pokemon_id]
+    end
   end
 
   def new
@@ -47,15 +53,22 @@ class PokemonAbilitiesController < ApplicationController
     def fetch_abilities_and_create
       abilities = Services::PokeApi::Api.get_abilities(params[:id])
 
-      abilities.each do |ability|
-        PokemonAbility.create(name: ability[0], url: ability[1], pokemon_id: @pokemon.id)
+      if abilities.empty?
+        @pokemon_ability = "Not found"
+        @pokemon.destroy
+      else
+        @pokemon.save
+
+        abilities.each do |ability|
+          PokemonAbility.create(name: ability[0], url: ability[1], pokemon_id: @pokemon.id)
+        end
       end
     end
 
     def set_pokemon_ability
-      @pokemon = Pokemon.find_or_create_by(name: params[:id].downcase)
+      @pokemon = Pokemon.find_or_initialize_by(name: params[:id].downcase)
     
-      find_abilities.exists? ? @pokemon_ability = find_abilities : fetch_abilities_and_create
+      @pokemon.id.nil? ? fetch_abilities_and_create : @pokemon_ability = find_abilities
     end
 
     def pokemon_ability_params
