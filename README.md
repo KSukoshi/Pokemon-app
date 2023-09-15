@@ -16,7 +16,7 @@ Projeto API de intermediação de dados para cadastro de habilidades dos Pokemon
 
 ## Stack utilizada
 
-**Back-end:** Ruby on Rails, Docker, Nginx, Postgresql, Redis, Sidekiq
+**Back-end:** Ruby 3.2.2 Rails 7, Docker, Nginx, Postgresql, Redis, Sidekiq
 
 
 ## Imagem Docker
