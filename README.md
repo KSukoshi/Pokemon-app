@@ -107,5 +107,5 @@ http://localhost:8020/pokemon_abilities/teste
 
 **Request Status 400**
 ```json
-["error":"Pokemon not found"]
+{"error":"Pokemon not found"}
 ```
