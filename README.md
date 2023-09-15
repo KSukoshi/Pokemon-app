@@ -97,7 +97,7 @@ Não importa se houver letras maíusculas, o endpoint sempre salvará a informa�
 ]
 ```
 
-Ao acessar as habilidades do Pokemon, elas são salvas no banco de dados, reduzindo o número de requisições efetuadas para trazer essa informações, o que pode melhorar a performance em alta demanda.
+Ao acessar as habilidades do Pokemon, elas são salvas no banco de dados, reduzindo o número de requisições efetuadas para trazer essas mesmas informação novamente, o que pode melhorar a performance em alta demanda.
 
 Caso seja acessado um Pokemon que não existe como nesse exemplo, ele retornará um erro.
 
